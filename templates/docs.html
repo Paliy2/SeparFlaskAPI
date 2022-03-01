@@ -1,0 +1,46 @@
+<style>
+    code {
+        color: darkred;
+    }
+</style>
+<br>
+<h1>
+    Short API reference
+</h1>
+
+<hr>
+<a href='/phone_data_service/phone_data'>'/phone_data_service/phone_data'</a> POST (create new item), GET[LIST]
+<br><a href='/phone_data_service/not_sent_phone_data/'>'/phone_data_service/not_sent_phone_data'</a> GET[LIST] отримати дані тільки для <code>sent_times == 0</code>.
+<br><a href='/phone_data_service/top_down_sent_phone_data/'>'/phone_data_service/top_down_sent_phone_data'</a> GET[LIST] Отримати дані тільки для <code>sent_time != 0</code>.
+Посортовано у спадаючому порядку за <code>sent_times</code>.
+<br><a href='/phone_data_service/phone_data/1'>'/phone_data_service/phone_data/&ltint:id&gt'</a>
+GET, PATCH, DELETE. Для вас достатньо використовувати GET - Отримати елемент за <code>id</code>.
+<br><a href='/phone_data_service/increment_sent_statistics/1'>'/phone_data_service/increment_sent_statistics/&ltint:id&gt'</a>
+GET. Запит збільшує <code>sent_times</code> параметр на один. Повертає JSON цього рядка.
+<br><br><hr><br>
+JSON params to PATCH:<br>
+['sent_times', 'phone_number', 'address_city',
+'address_street', 'address_house',
+'address_entrance', 'location_latitude',
+'location_longitude', 'first_name', 'app']
+
+<br>
+<br>
+Для GET[LIST] можна вказувати параметр <code>?page=3</code> після URL.
+Вертає дані відповідно до сторінки. Розберетеся.
+<br><br>
+
+Просто GET JSON RETURN PARAMS (Need to convert to UTF-8 on client)
+<pre>
+    {"address_entrance": "5",
+    "id": 11,
+    "url": "http://127.0.0.1:5000/phone_data_service/phone_data/11",
+    "address_house": "23\u0411\u043a2",
+    "phone_number": "+79877450056",
+    "first_name": "\u0410\u0440\u0442\u0435\u043c",
+    "address_street": "u0443\u043b\u0438\u0446\u0430",
+    "address_city": "\u041c\u043e\u0441\u043a\u0432\u0430",
+    "app": "eda_iphone",
+    "sent_times": 5}
+</pre>
+

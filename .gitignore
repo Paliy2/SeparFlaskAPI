@@ -1,0 +1,6 @@
+.idea
+__pycache__
+part3/
+part3/*
+static/
+
